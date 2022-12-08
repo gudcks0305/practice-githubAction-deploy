@@ -52,3 +52,10 @@ jobs:
 
     - name : Upload to S3
       run : aws s3 cp --region ap-northeast-2 ./practice-deploy.zip s3://$S3_BUCKET_NAME/practice-deploy.zip
+
+    - name : Deploy to EC2
+      run : >
+        aws deploy create-deployment --application-name be-71-gudcks0305
+        --deployment-config-name CodeDeployDefault.AllAtOnce
+        --deployment-group-name be-71-gudcks0305-group
+        --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=practice-deploy.zip
