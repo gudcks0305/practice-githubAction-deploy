@@ -38,7 +38,6 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew clean build
       shell : bash
-
     - name : Make zip file
       run : zip -r ./practice-deploy.zip .
       shell : bash
